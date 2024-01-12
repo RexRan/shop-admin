@@ -3,7 +3,7 @@ import AsideList from "~/components/AsideList.vue";
 import {
   getImageClass, createImageClass, updateImageClass, deleteImageClass
 } from "~/api/ImageClass.js";
-import {ref, reactive, computed, onMounted} from 'vue'
+import {ref, reactive, computed} from 'vue'
 import FormDrawer from "~/components/FormDrawer.vue";
 import {toast} from "~/composable/util.js";
 import {useImageStore} from "~/store/imageList.js";
@@ -33,7 +33,7 @@ function getData(page = null) {
     if (item) {
       activeId.value = item.id
     }
-  }).finally(res => {
+  }).finally(() => {
     loading.value = false
   })
 }
@@ -89,7 +89,7 @@ const handleSubmit = () => {
     const fun =
         editId.value !== 0 ? updateImageClass(editId.value, form) : createImageClass(form)
 
-    fun.then(res => {
+    fun.then(() => {
       toast(drawerTitle.value + "成功")
       getData(editId.value ? currentPage.value : 1)
       formDrawerRef.value.close()
