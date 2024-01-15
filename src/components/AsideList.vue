@@ -17,7 +17,7 @@ defineEmits(['edit', 'delete'])
         <slot/>
       </span>
       <el-button text class="ml-auto px-1" type="primary" size="default"
-                 @click="$emit('edit')">
+                 @click.stop="$emit('edit')">
         <el-icon :size="14">
           <Edit/>
         </el-icon>
@@ -25,7 +25,7 @@ defineEmits(['edit', 'delete'])
       <el-popconfirm title="确定要删除吗?" confirm-button-text="确认" cancel-button-text="取消">
         <template #reference>
           <el-button text class="px-1" type="primary" size="default"
-                     @click="$emit('delete')">
+                     @click.stop="$emit('delete')">
             <el-icon :size="14">
               <Close/>
             </el-icon>
